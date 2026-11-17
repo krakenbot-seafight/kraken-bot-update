@@ -150,7 +150,7 @@
 
 <script>
   // butonul Download duce mereu la ultima versiune publicată pe GitHub (arhiva de instalare, nume fix)
-  const DEPOZIT = "seafightiepuras-art/kraken-bot-update";
+  const DEPOZIT = "krakenbot-seafight/kraken-bot-update";
   const LINK = `https://github.com/${DEPOZIT}/releases/latest/download/Kraken-Bot-instalare.zip`;
   document.querySelectorAll("a.dl").forEach((a) => (a.href = LINK));
   fetch(`https://api.github.com/repos/${DEPOZIT}/releases/latest`).then((r) => (r.ok ? r.json() : null)).then((r) => {
