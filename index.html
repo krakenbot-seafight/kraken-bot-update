@@ -250,7 +250,11 @@
       h.textContent = "v" + String(r.tag_name).replace(/^v/i, "");
       d.textContent = new Date(r.published_at).toLocaleDateString();
       h.append(d);
-      p.textContent = (r.body || "").trim() || "—";
+      // notița are engleza, apoi <!--ro--> și româna: se arată limba aleasă pe site
+      const [en, ro] = String(r.body || "").split("<!--ro-->");
+      p.dataset.en = (en || "").trim(); p.dataset.ro = (ro || en || "").trim();
+      p.className = "notita";
+      p.textContent = (document.documentElement.lang === "ro" ? p.dataset.ro : p.dataset.en) || "—";
       c.append(h, p); loc.append(c);
     }
   }).catch(() => {});
@@ -301,6 +305,7 @@
     const d = l === "ro" ? RO : EN;
     document.querySelectorAll("[data-t]").forEach((e) => { if (d[e.dataset.t]) e.innerHTML = d[e.dataset.t]; });
     document.documentElement.lang = l;
+    document.querySelectorAll("p.notita").forEach((p) => (p.textContent = (l === "ro" ? p.dataset.ro : p.dataset.en) || "—"));
     document.querySelectorAll(".lang button").forEach((b) => b.classList.toggle("on", b.dataset.l === l));
     try { localStorage.setItem("limba", l); } catch {}
   }
