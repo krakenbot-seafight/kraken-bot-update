@@ -95,7 +95,7 @@
       <a href="#features" data-t="nFeatures">Features</a>
       <a href="#pret" data-t="nPret">Pricing</a>
       <a href="#install" data-t="nInstall">Install</a>
-      <a href="#nou" data-t="nNou">What's new</a>
+      <a href="#nou" data-t="nNou" hidden>What's new</a>
       <a href="#faq" data-t="nFaq">FAQ</a>
     </div>
     <a class="disc" href="#" target="_blank" rel="noopener">Discord</a>
@@ -173,7 +173,7 @@
   </div>
 </section>
 
-<section id="nou">
+<section id="nou" hidden>
   <div class="wrap">
     <h2 data-t="nTitle">What's new</h2>
     <p class="lead" data-t="nLead">Every new version installs itself when you start Kraken Bot.</p>
@@ -241,22 +241,28 @@
     document.body.append(f); f.submit(); f.remove();
   }));
   // „Noutăți”: textele versiunilor publicate pe GitHub (aceleași cu actualizările din program)
-  fetch("https://api.github.com/repos/" + DEPOZIT + "/releases?per_page=8").then((r) => (r.ok ? r.json() : [])).then((lista) => {
+  fetch("https://api.github.com/repos/" + DEPOZIT + "/releases?per_page=30").then((r) => (r.ok ? r.json() : [])).then((lista) => {
     const loc = document.getElementById("noutati");
+    // doar funcțiile noi anunțate (partea de după <!--nou--> din notița versiunii); reparațiile nu apar aici
+    let nr = 0;
     for (const r of lista) {
-      if (r.draft) continue;
+      if (r.draft || !String(r.body || "").includes("<!--nou-->")) continue;
+      nr++;
       const c = document.createElement("div"), h = document.createElement("h3"), d = document.createElement("span"), p = document.createElement("p");
       c.className = "card";
       h.textContent = "v" + String(r.tag_name).replace(/^v/i, "");
       d.textContent = new Date(r.published_at).toLocaleDateString();
       h.append(d);
       // notița are engleza, apoi <!--ro--> și româna: se arată limba aleasă pe site
-      const [en, ro] = String(r.body || "").split("<!--ro-->");
+      const [en, ro] = String(r.body).split("<!--nou-->")[1].split("<!--ro-->");
       p.dataset.en = (en || "").trim(); p.dataset.ro = (ro || en || "").trim();
       p.className = "notita";
       p.textContent = (document.documentElement.lang === "ro" ? p.dataset.ro : p.dataset.en) || "—";
       c.append(h, p); loc.append(c);
     }
+    // nicio funcție nouă anunțată încă: secțiunea și linkul din meniu stau ascunse
+    document.getElementById("nou").hidden = !nr;
+    document.querySelector('nav a[href="#nou"]').hidden = !nr;
   }).catch(() => {});
 
   const RO = {
