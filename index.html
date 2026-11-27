@@ -61,6 +61,26 @@
   summary { cursor: pointer; font-weight: 600; }
   details p { color: var(--muted); margin: 10px 0 0; }
 
+  .pret { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 860px; margin: 0 auto; }
+  .pret .card { text-align: center; display: flex; flex-direction: column; gap: 10px; }
+  .pret .card.best { border-color: var(--gold2); }
+  .pret .suma { font: 800 40px Cinzel, serif; color: var(--gold); }
+  .pret .per { color: var(--muted); font-size: 14px; }
+  .pret button { margin-top: auto; border: 0; cursor: pointer; font: 600 15px Inter; padding: 13px; border-radius: 10px; background: linear-gradient(180deg, #f3c862, var(--gold2)); color: #1a1205; }
+  .idpc { max-width: 560px; margin: 0 auto 26px; text-align: center; }
+  .idpc input { width: 100%; max-width: 300px; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg2); color: var(--text); font: 600 16px Inter; text-align: center; letter-spacing: 1px; text-transform: uppercase; }
+  .idpc input.rau { border-color: #e06c6c; }
+  .idpc p { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
+  .nou { max-width: 760px; margin: 0 auto; display: grid; gap: 10px; }
+  .nou .card h3 { margin: 0 0 4px; font-size: 16px; color: var(--gold); }
+  .nou .card h3 span { color: var(--muted); font-weight: 400; font-size: 13px; margin-left: 8px; }
+  .nou .card p { white-space: pre-line; }
+  .cerinte { max-width: 720px; margin: 0 auto 22px; }
+  .cerinte ul { margin: 8px 0 0; padding-left: 20px; color: var(--muted); }
+  .cerinte h3 { margin: 0; font-size: 17px; }
+  .sfat { max-width: 720px; margin: 18px auto 0; color: var(--muted); font-size: 14px; }
+  .btn.discord { background: #5865f2; color: #fff; }
+  nav .disc { color: #fff; background: #5865f2; padding: 5px 12px; border-radius: 8px; font: 600 13px Inter; text-decoration: none; }
   .cta { text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(47,179,196,.18), transparent 70%); }
   footer { padding: 30px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; text-align: center; }
   footer p { margin: 4px 0; }
@@ -73,9 +93,12 @@
     <a class="logo" href="#"><img src="kraken.png" alt=""> KRAKEN BOT</a>
     <div class="links">
       <a href="#features" data-t="nFeatures">Features</a>
+      <a href="#pret" data-t="nPret">Pricing</a>
       <a href="#install" data-t="nInstall">Install</a>
+      <a href="#nou" data-t="nNou">What's new</a>
       <a href="#faq" data-t="nFaq">FAQ</a>
     </div>
+    <a class="disc" href="#" target="_blank" rel="noopener">Discord</a>
     <div class="lang"><button data-l="en" class="on">EN</button><button data-l="ro">RO</button></div>
   </div>
 </nav>
@@ -86,7 +109,7 @@
     <h1>Kraken Bot</h1>
     <p class="sub" data-t="sub">Your autopilot for Seafight. Press START and it sails, fights, collects and finishes missions for you — hour after hour.</p>
     <a class="btn gold dl" href="#"><span>⬇</span> <span data-t="download">Download for Windows</span></a>
-    <div class="meta"><span data-t="meta">Windows 10 / 11 · 64-bit · free updates</span> · <span class="ver"></span></div>
+    <div class="meta"><span data-t="meta">Windows 10 / 11 · 64-bit · 2 days free · free updates</span> · <span class="ver"></span></div>
   </div>
 </header>
 
@@ -112,12 +135,49 @@
   <div class="wrap">
     <h2 data-t="iTitle">Install in 2 minutes</h2>
     <p class="lead" data-t="iLead">No installer, nothing to configure in Windows.</p>
+    <div class="card cerinte">
+      <h3 data-t="rTitle">What you need</h3>
+      <ul>
+        <li data-t="r1">Windows 10 or 11, 64-bit, and about 1 GB of free space.</li>
+        <li data-t="r2">An internet connection and your Seafight account.</li>
+        <li data-t="r3">The computer must stay on: turn off sleep while the bot runs (Windows Settings → System → Power).</li>
+      </ul>
+    </div>
     <ol class="steps">
-      <li data-t="i1">Download the zip with the button above and extract it anywhere (for example on your Desktop).</li>
-      <li data-t="i2">Open the “Kraken Bot” folder and start <b>Kraken Bot.exe</b>.</li>
-      <li data-t="i3">Log in to Seafight in the window that opens, as you normally do in your browser.</li>
-      <li data-t="i4">In the panel, write your ship name (Settings), pick what the bot should do (Home) and press <b>START</b>.</li>
+      <li data-t="i1">Download the zip with the button above. Right-click it → <b>Extract All</b> → for example on your Desktop. Do not start it from inside the zip.</li>
+      <li data-t="i2">Open the “Kraken Bot” folder and start <b>Kraken Bot.exe</b>. If Windows shows “Windows protected your PC”, click <b>More info</b> → <b>Run anyway</b>.</li>
+      <li data-t="i3">Log in to Seafight in the window that opens, as you normally do in your browser, and press Play.</li>
+      <li data-t="i4">The first time, a window shows your 2 free days and your computer ID (<b>PC-XXXXXXXX</b>). The ID is also always shown at the top left, under the name “Kraken Bot”.</li>
+      <li data-t="i5">In the panel choose what the bot should do: <b>NPC</b> (which ships to sink), <b>Chests</b>, <b>Items</b>, <b>Missions</b>, <b>Bonus maps</b>. In <b>Settings</b> write your ship name.</li>
+      <li data-t="i6">Press <b>▶ Start</b>. To stop: <b>F9</b> (from anywhere) or <b>ESC</b> (in the program).</li>
     </ol>
+    <p class="sfat" data-t="iSfat">While it runs: keep the Kraken Bot window open (do not minimise it) and do not click inside the game. Updates install themselves when you start the program.</p>
+  </div>
+</section>
+
+<section id="pret">
+  <div class="wrap">
+    <h2 data-t="pTitle">Pricing</h2>
+    <p class="lead" data-t="pLead">Every new computer gets 2 days free when Kraken Bot starts for the first time. After that, one licence works on one computer.</p>
+    <div class="idpc">
+      <input id="idpc" placeholder="PC-XXXXXXXX" maxlength="11" autocomplete="off" spellcheck="false">
+      <p data-t="pId">Your computer ID (PC-XXXXXXXX) is at the top left of Kraken Bot, under the name, and in the welcome window (button “Copy ID”). Enter it here before you pay: the licence goes on that computer.</p>
+    </div>
+    <div class="pret">
+      <div class="card"><div class="per" data-t="p1">1 month</div><div class="suma">20 €</div><button data-luni="1" data-suma="20.00" data-t="pBuy">Pay with PayPal</button></div>
+      <div class="card best"><div class="per" data-t="p3">3 months</div><div class="suma">50 €</div><button data-luni="3" data-suma="50.00" data-t="pBuy">Pay with PayPal</button></div>
+      <div class="card"><div class="per" data-t="p12">1 year</div><div class="suma">200 €</div><button data-luni="12" data-suma="200.00" data-t="pBuy">Pay with PayPal</button></div>
+    </div>
+    <p class="lead" style="margin-top:26px" data-t="pDupa">After the payment your licence is activated, usually within a few hours. Kraken Bot shows a message and unlocks by itself — nothing to install or type. Questions? Write to us on Discord.</p>
+    <div style="text-align:center"><a class="btn discord" href="#" target="_blank" rel="noopener"><span data-t="disc">Join our Discord</span></a></div>
+  </div>
+</section>
+
+<section id="nou">
+  <div class="wrap">
+    <h2 data-t="nTitle">What's new</h2>
+    <p class="lead" data-t="nLead">Every new version installs itself when you start Kraken Bot.</p>
+    <div class="nou" id="noutati"></div>
   </div>
 </section>
 
@@ -129,6 +189,9 @@
       <details><summary data-t="q2">Does it need my password?</summary><p data-t="a2">No. You log in yourself, in the program's own window. The bot never reads or stores your password.</p></details>
       <details><summary data-t="q3">Can I use my computer while it runs?</summary><p data-t="a3">The game window needs to stay open. It works best when you leave it running on its own.</p></details>
       <details><summary data-t="q4">How do I update?</summary><p data-t="a4">You don't have to: every time you start it, it checks for a new version and installs it by itself. Your settings stay as they are.</p></details>
+      <details><summary data-t="q5">How does the licence work?</summary><p data-t="a5">The licence is tied to your computer, not to your game account. Pay with your computer ID (shown in the panel) and the bot unlocks itself on that computer. If you change computers, write to us and we move the remaining time.</p></details>
+      <details><summary data-t="q7">Where do I find my computer ID? Can it change?</summary><p data-t="a7">It is at the top left of Kraken Bot, under the name (for example “ID PC-7F3A91C2 · trial until …”), and in the welcome window. It comes from Windows: it stays the same when you restart, update or reinstall Kraken Bot. It changes only if you reinstall Windows or use another computer — then write to us on Discord and we move your remaining time.</p></details>
+      <details><summary data-t="q6">Does it need the internet for the licence?</summary><p data-t="a6">It checks the licence when it starts and from time to time. Without internet it keeps working for 48 hours.</p></details>
     </div>
   </div>
 </section>
@@ -138,6 +201,7 @@
     <h2 data-t="cTitle">Ready to set sail?</h2>
     <p class="lead" data-t="cLead">Download Kraken Bot, press START and let the Kraken do the work.</p>
     <a class="btn gold dl" href="#"><span>⬇</span> <span data-t="download">Download for Windows</span></a>
+    <a class="btn discord" href="#" target="_blank" rel="noopener" style="margin-left:10px"><span data-t="disc">Join our Discord</span></a>
   </div>
 </section>
 
@@ -157,10 +221,58 @@
     if (r && r.tag_name) document.querySelector(".ver").textContent = "v" + String(r.tag_name).replace(/^v/i, "");
   }).catch(() => {});
 
+  // 27 nov: serverul de Discord (butoanele „Discord”)
+  const DISCORD = "https://discord.gg/K2k8wZVtNF";
+  document.querySelectorAll("a.disc, a.discord").forEach((a) => (a.href = DISCORD));
+  // 27 nov: plata PayPal („Buy Now”): suma, perioada și ID-ul PC-ului (câmpul „PC ID”) ajung în emailul de la PayPal
+  const PAYPAL = "gheorghe_angel@yahoo.com";
+  const RE_ID = /^PC-[0-9A-F]{8}$/;
+  const idIn = document.getElementById("idpc");
+  try { const v = new URLSearchParams(location.search).get("pc"); if (v) idIn.value = v.toUpperCase(); } catch {}
+  idIn.addEventListener("input", () => { idIn.value = idIn.value.toUpperCase().replace(/\s/g, ""); idIn.classList.remove("rau"); });
+  document.querySelectorAll(".pret button").forEach((b) => b.addEventListener("click", () => {
+    const id = idIn.value.trim().toUpperCase();
+    if (!RE_ID.test(id)) { idIn.classList.add("rau"); idIn.focus(); idIn.scrollIntoView({ block: "center" }); return; }
+    const luni = b.dataset.luni, f = document.createElement("form");
+    f.method = "post"; f.action = "https://www.paypal.com/cgi-bin/webscr"; f.target = "_blank";
+    const camp = { cmd: "_xclick", business: PAYPAL, item_name: "Kraken Bot licence - " + (luni === "12" ? "1 year" : luni + (luni === "1" ? " month" : " months")),
+      item_number: "KRAKEN-" + luni, amount: b.dataset.suma, currency_code: "EUR", no_shipping: "1", on0: "PC ID", os0: id };
+    for (const [k, v] of Object.entries(camp)) { const i = document.createElement("input"); i.type = "hidden"; i.name = k; i.value = v; f.append(i); }
+    document.body.append(f); f.submit(); f.remove();
+  }));
+  // „Noutăți”: textele versiunilor publicate pe GitHub (aceleași cu actualizările din program)
+  fetch("https://api.github.com/repos/" + DEPOZIT + "/releases?per_page=8").then((r) => (r.ok ? r.json() : [])).then((lista) => {
+    const loc = document.getElementById("noutati");
+    for (const r of lista) {
+      if (r.draft) continue;
+      const c = document.createElement("div"), h = document.createElement("h3"), d = document.createElement("span"), p = document.createElement("p");
+      c.className = "card";
+      h.textContent = "v" + String(r.tag_name).replace(/^v/i, "");
+      d.textContent = new Date(r.published_at).toLocaleDateString();
+      h.append(d);
+      p.textContent = (r.body || "").trim() || "—";
+      c.append(h, p); loc.append(c);
+    }
+  }).catch(() => {});
+
   const RO = {
-    nFeatures: "Ce face", nInstall: "Instalare", nFaq: "Întrebări",
+    nFeatures: "Ce face", nInstall: "Instalare", nFaq: "Întrebări", nPret: "Prețuri", nNou: "Noutăți",
+    disc: "Intră pe Discord",
+    rTitle: "De ce ai nevoie", r1: "Windows 10 sau 11, 64 de biți, și cam 1 GB liber pe disc.", r2: "Internet și contul tău de Seafight.",
+    r3: "Calculatorul trebuie să rămână pornit: oprește modul de repaus cât merge botul (Setări Windows → Sistem → Alimentare).",
+    i5: "În panou alegi ce să facă botul: <b>NPC</b> (ce nave să scufunde), <b>Cufere</b>, <b>Iteme</b>, <b>Misiuni</b>, <b>Hărți bonus</b>. În <b>Setări</b> scrii numele navei tale.",
+    i6: "Apeși <b>▶ Pornește</b>. Oprire: <b>F9</b> (de oriunde) sau <b>ESC</b> (în program).",
+    iSfat: "Cât merge: ține fereastra Kraken Bot deschisă (nu o minimiza) și nu da click în joc. Actualizările se pun singure când pornești programul.",
+    q7: "Unde găsesc ID-ul calculatorului? Se poate schimba?", a7: "E în stânga sus în Kraken Bot, sub nume (de exemplu „ID PC-7F3A91C2 · probă până la …”), și în fereastra de bun venit. Vine din Windows: rămâne același când repornești, actualizezi sau reinstalezi Kraken Bot. Se schimbă doar dacă reinstalezi Windows-ul sau folosești alt calculator — atunci ne scrii pe Discord și mutăm timpul rămas.",
+    pTitle: "Prețuri", pLead: "Fiecare calculator nou are 2 zile gratuit la prima pornire a botului. După aceea, o licență merge pe un calculator.",
+    pId: "ID-ul calculatorului tău (PC-XXXXXXXX) e în stânga sus în Kraken Bot, sub nume, și în fereastra de bun venit (butonul „Copiază ID-ul”). Scrie-l aici înainte să plătești: licența se pune pe acel calculator.",
+    p1: "1 lună", p3: "3 luni", p12: "1 an", pBuy: "Plătește cu PayPal",
+    pDupa: "După plată licența se activează, de obicei în câteva ore. Kraken Bot îți arată un mesaj și se deblochează singur — nimic de instalat sau de scris. Întrebări? Scrie-ne pe Discord.",
+    nTitle: "Noutăți", nLead: "Fiecare versiune nouă se instalează singură când pornești Kraken Bot.",
+    q5: "Cum funcționează licența?", a5: "Licența e legată de calculatorul tău, nu de contul din joc. Plătești cu ID-ul calculatorului (îl vezi în panou) și botul se deblochează singur pe acel calculator. Dacă schimbi calculatorul, ne scrii și mutăm timpul rămas.",
+    q6: "Are nevoie de internet pentru licență?", a6: "Verifică licența la pornire și din când în când. Fără internet merge încă 48 de ore.",
     sub: "Pilotul tău automat pentru Seafight. Apeși START și navighează, luptă, strânge și termină misiunile pentru tine — oră după oră.",
-    download: "Descarcă pentru Windows", meta: "Windows 10 / 11 · 64 de biți · actualizări gratuite",
+    download: "Descarcă pentru Windows", meta: "Windows 10 / 11 · 64 de biți · 2 zile gratuit · actualizări gratuite",
     fTitle: "Ce face", fLead: "Tot ce ai face tu, făcut la fel cum face un jucător: cu mouse-ul și tastatura.",
     f1t: "Progresie de la nivelul 1 la 60", f1: "Misiunile de nivel și probele de pirat, în ordinea bună: știe cine dă fiecare misiune, unde să meargă, ce să scufunde sau să strângă și unde o predă.",
     f2t: "Misiuni zilnice", f2: "Bifezi misiunile zilnice pe care le vrei; le ia de la contractori, le face și le predă, una după alta.",
@@ -172,10 +284,10 @@
     f8t: "Orice ecran, orice cont", f8: "Merge la orice mărime de fereastră, zoom și așezare a ferestrelor jocului, pe orice cont. Panou în engleză și română.",
     f9t: "Mereu la zi", f9: "Versiunile noi se instalează singure când pornești programul. Problemele se raportează automat, ca să fie reparate repede (le poți opri).",
     iTitle: "Instalare în 2 minute", iLead: "Fără instalator, nimic de configurat în Windows.",
-    i1: "Descarci arhiva cu butonul de sus și o dezarhivezi oriunde (de exemplu pe Desktop).",
-    i2: "Deschizi folderul „Kraken Bot” și pornești <b>Kraken Bot.exe</b>.",
-    i3: "Te loghezi în Seafight în fereastra care se deschide, ca de obicei în browser.",
-    i4: "În panou scrii numele navei tale (Setări), alegi ce să facă botul (Pornire) și apeși <b>START</b>.",
+    i1: "Descarci arhiva cu butonul de sus. Click dreapta pe ea → <b>Extrage tot</b> → de exemplu pe Desktop. Nu porni programul din interiorul arhivei.",
+    i2: "Deschizi folderul „Kraken Bot” și pornești <b>Kraken Bot.exe</b>. Dacă Windows arată „Windows a protejat PC-ul”, apeși <b>Mai multe informații</b> → <b>Executare oricum</b>.",
+    i3: "Te loghezi în Seafight în fereastra care se deschide, ca de obicei în browser, și apeși Play.",
+    i4: "Prima dată apare o fereastră cu cele 2 zile gratuite și ID-ul calculatorului (<b>PC-XXXXXXXX</b>). ID-ul se vede mereu și în stânga sus, sub numele „Kraken Bot”.",
     q1: "Cum joacă?", a1: "Ca un jucător care stă la calculator: dă click și apasă taste în fereastra jocului. Nu modifică jocul și nu trimite singur nimic la server.",
     q2: "Are nevoie de parola mea?", a2: "Nu. Te loghezi tu, în fereastra programului. Botul nu citește și nu păstrează parola.",
     q3: "Pot folosi calculatorul cât merge?", a3: "Fereastra jocului trebuie să rămână deschisă. Merge cel mai bine când îl lași singur.",
